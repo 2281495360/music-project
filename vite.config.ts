@@ -4,6 +4,9 @@ import components from 'unplugin-vue-components/vite'
 import banner from 'vite-plugin-banner'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { envDir, sourceDir, manualChunks } from './scripts/build'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import pkg from './package.json'
 
 // https://vitejs.dev/config/
@@ -113,7 +116,21 @@ export default defineConfig(({ mode }) => {
        * 支持 `.vue` 文件的解析
        */
       vue(),
-
+      AutoImport({
+        include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue$/,
+          /\.vue\?vue/, // .vue
+          /\.md$/, // .md
+        ],
+        imports: ['vue', 'vue-router'], // 自动导入
+        //这个一定要配置，会多出一个auto-import.d.ts文件，
+        dts: 'src/types/auto-import.d.ts',
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
       /**
        * 如果需要支持 `.tsx` 组件，请安装 `@vitejs/plugin-vue-jsx` 这个包
        * 并在这里添加一个插件导入 `import vueJsx from '@vitejs/plugin-vue-jsx'`

@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/home.vue'),
+    component: () => import('@/views/Home.vue'),
     meta: {
       title: 'Home',
     },
@@ -19,27 +19,27 @@ const routes: RouteRecordRaw[] = [
   /**
    * 子路由示例
    */
-  {
-    path: '/foo',
-    name: 'foo',
-    component: () => import('@/components/TransferStation.vue'),
-    meta: {
-      title: 'Foo',
-    },
-    redirect: {
-      name: 'bar',
-    },
-    children: [
-      {
-        path: 'bar',
-        name: 'bar',
-        component: () => import('@/views/foo/bar.vue'),
-        meta: {
-          title: 'Bar',
-        },
-      },
-    ],
-  },
+  // {
+  //   path: '/foo',
+  //   name: 'foo',
+  //   component: () => import('@/components/TransferStation.vue'),
+  //   meta: {
+  //     title: 'Foo',
+  //   },
+  //   redirect: {
+  //     name: 'bar',
+  //   },
+  //   children: [
+  //     {
+  //       path: 'bar',
+  //       name: 'bar',
+  //       component: () => import('@/views/foo/bar.vue'),
+  //       meta: {
+  //         title: 'Bar',
+  //       },
+  //     },
+  //   ],
+  // },
 ]
 
 export default routes

@@ -1,5 +1,7 @@
 <template>
-  <router-view :key="key" />
+  <div class="container">
+    <router-view :key="key" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -14,3 +16,13 @@ watchResize(() => {
   document.body.className = `platform-${isMobile() ? 'mobile' : 'desktop'}`
 })
 </script>
+<style lang="less" scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #a7cee0 50%, #d0dea7);
+}
+</style>
