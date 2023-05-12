@@ -18,7 +18,7 @@
     "mirror:get": "npm config get registry",
     "mirror:set": "npm config set registry https://registry.npmmirror.com",
     "mirror:rm": "npm config rm registry",
-    "backup": "git add . && git commit -m \"init: 🎉添加element plus，去掉脚手架多余部分\" && git push",
+    "backup": "git add . && git commit -m \"init: 🎉项目初始化\" && git push",
     "up": "npx npm-check-updates -u",
     "prepare": "simple-git-hooks"
   },
