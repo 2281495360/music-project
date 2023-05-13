@@ -6,6 +6,8 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { envDir, sourceDir, manualChunks } from './scripts/build'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import pkg from './package.json'
 
@@ -125,11 +127,31 @@ export default defineConfig(({ mode }) => {
         ],
         imports: ['vue', 'vue-router'], // 自动导入
         //这个一定要配置，会多出一个auto-import.d.ts文件，
-        dts: 'src/types/auto-import.d.ts',
-        resolvers: [ElementPlusResolver()],
+        dts: 'src/auto-import.d.ts',
+        resolvers: [
+          ElementPlusResolver(),
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+          }),
+        ],
+        eslintrc: {
+          enabled: true,
+          filepath: './.eslintrc-auto-import.json',
+          globalsPropValue: true,
+        },
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ['ep'],
+          }),
+          ElementPlusResolver(),
+        ],
+      }),
+      Icons({
+        autoInstall: true,
       }),
       /**
        * 如果需要支持 `.tsx` 组件，请安装 `@vitejs/plugin-vue-jsx` 这个包

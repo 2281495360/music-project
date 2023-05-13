@@ -19,6 +19,7 @@ watchResize(() => {
 <style lang="less" scoped>
 .container {
   width: 100%;
+  min-height: 770px;
   height: 100vh;
   display: flex;
   justify-content: center;
