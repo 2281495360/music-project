@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowLeft, ArrowRight, Search, View } from '@element-plus/icons-vue'
+import { ArrowLeft, ArrowRight, Search } from '@element-plus/icons-vue'
 const searchInput = ref('')
 </script>
 

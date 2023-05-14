@@ -12,7 +12,9 @@
           <FindMusic></FindMusic>
         </el-main>
       </el-container>
-      <el-footer class="box_footer">Footer</el-footer>
+      <el-footer class="box_footer">
+        <Footer></Footer>
+      </el-footer>
     </el-container>
   </div>
 </template>
@@ -21,6 +23,7 @@
 import Header from '@/views/Header/index.vue'
 import Aside from '@/views/Aside/index.vue'
 import FindMusic from '@/views/FindMusic/index.vue'
+import Footer from '@/views/Footer/index.vue'
 </script>
 
 <style lang="less" scoped>

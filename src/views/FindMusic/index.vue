@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <el-scrollbar height="584px">
+    <el-scrollbar height="550px">
       <el-tab-pane label="个性推荐" name="个性推荐">
         <Recommend></Recommend>
       </el-tab-pane>
