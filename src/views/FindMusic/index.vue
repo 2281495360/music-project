@@ -4,7 +4,9 @@
       <el-tab-pane label="个性推荐" name="个性推荐">
         <Recommend></Recommend>
       </el-tab-pane>
-      <el-tab-pane label="歌单" name="歌单">歌单</el-tab-pane>
+      <el-tab-pane label="歌单" name="歌单">
+        <SongList></SongList>
+      </el-tab-pane>
       <el-tab-pane label="歌手" name="歌手">歌手</el-tab-pane>
       <el-tab-pane label="最新音乐" name="最新音乐">最新音乐</el-tab-pane>
     </el-scrollbar>
@@ -12,6 +14,7 @@
 </template>
 <script lang="ts" setup>
 import Recommend from './Recommend/index.vue'
+import SongList from './SongList/index.vue'
 import type { TabsPaneContext } from 'element-plus'
 
 const activeName = ref('个性推荐')
