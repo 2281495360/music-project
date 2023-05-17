@@ -15,20 +15,30 @@
       </div>
     </div>
   </div>
-  <el-button round plain
-    >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
-  ></el-button>
-  <GridItem :title="title" :row="row" :col="col">
-    <div class="grid-content ep-bg-purple" />
-  </GridItem>
+  <div class="radio_box">
+    <el-button round plain
+      >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
+    ></el-button>
+    <el-radio-group v-model="radio" size="small">
+      <el-radio-button label="华语" />
+      <el-radio-button label="流行" />
+      <el-radio-button label="古典" />
+      <el-radio-button label="ACG" />
+      <el-radio-button label="摇滚" />
+      <el-radio-button label="民谣" />
+    </el-radio-group>
+  </div>
+  <el-row justify="space-between" v-for="item in 3" :key="item">
+    <el-col :span="24 / 5" v-for="item in 5" :key="item"
+      ><SongListCover></SongListCover
+    ></el-col>
+  </el-row>
 </template>
 
 <script lang="ts" setup>
 import { ArrowRight } from '@element-plus/icons-vue'
-import GridItem from '@/components/GridItem.vue'
-const title = ref('流行')
-const row = ref(3)
-const col = ref(5)
+import SongListCover from '@/components/SongListCover.vue'
+const radio = ref('流行')
 </script>
 
 <style lang="less" scoped>
@@ -52,12 +62,10 @@ const col = ref(5)
     }
   }
 }
-.grid-content {
-  border-radius: 4px;
-  min-height: 156px;
-  min-width: 156px;
-}
-.ep-bg-purple {
-  background-color: #b1bece;
+.radio_box {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

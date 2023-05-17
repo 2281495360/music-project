@@ -29,6 +29,7 @@ import Footer from '@/views/Footer/index.vue'
 <style lang="less" scoped>
 .box {
   min-height: 770px;
+  width: 1124px;
   min-width: 1124px;
   background: #fff;
   border-radius: 6px;
