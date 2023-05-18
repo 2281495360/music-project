@@ -18,7 +18,7 @@
     "mirror:get": "npm config get registry",
     "mirror:set": "npm config set registry https://registry.npmmirror.com",
     "mirror:rm": "npm config rm registry",
-    "backup": "git add . && git commit -m \"feat: ✨初步完成歌手和最新音乐的基本布局\" && git push",
+    "backup": "git add . && git commit -m \"feat: ✨初步完成视频和MV的基本布局\" && git push",
     "up": "npx npm-check-updates -u",
     "prepare": "simple-git-hooks"
   },

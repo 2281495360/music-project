@@ -9,7 +9,7 @@
           <Aside></Aside>
         </el-aside>
         <el-main>
-          <FindMusic></FindMusic>
+          <router-view></router-view>
         </el-main>
       </el-container>
       <el-footer class="box_footer">
@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import Header from '@/views/Header/index.vue'
 import Aside from '@/views/Aside/index.vue'
-import FindMusic from '@/views/FindMusic/index.vue'
 import Footer from '@/views/Footer/index.vue'
 </script>
 

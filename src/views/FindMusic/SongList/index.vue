@@ -30,8 +30,12 @@
   </div>
   <el-row justify="space-between" v-for="item in 3" :key="item">
     <el-col :span="24 / 5" v-for="item in 5" :key="item"
-      ><SongListCover></SongListCover
-    ></el-col>
+      ><SongListCover
+        ><el-tag effect="plain" type="info" size="small"
+          >3D环绕</el-tag
+        ></SongListCover
+      ></el-col
+    >
   </el-row>
 </template>
 

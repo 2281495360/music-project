@@ -15,6 +15,27 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: 'Home',
     },
+    redirect: {
+      name: 'findMusic',
+    },
+    children: [
+      {
+        path: 'findMusic',
+        name: 'findMusic',
+        component: () => import('@/views/FindMusic/index.vue'),
+        meta: {
+          title: 'findMusic',
+        },
+      },
+      {
+        path: 'video',
+        name: 'video',
+        component: () => import('@/views/VideoAndMV/index.vue'),
+        meta: {
+          title: 'Video',
+        },
+      },
+    ],
   },
   /**
    * 子路由示例

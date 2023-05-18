@@ -120,6 +120,9 @@ const filterRadio = ref('hot')
   padding: 2px 10px;
   border-radius: 12px;
 }
+:deep(.el-radio__label:hover) {
+  color: #44aaf8;
+}
 :deep(.el-radio-group) {
   flex: 1;
   gap: 8px;

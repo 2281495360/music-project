@@ -1,26 +1,36 @@
 <template>
-  <el-card class="song_list_cover_container" shadow="never">
-    <header>
-      <span style="float: right">
-        <i class="headphones icon"></i>
-        666万
-      </span>
-    </header>
-    <footer>
-      <el-text class="footer_text" truncated>云音乐私人频道</el-text>
-      <el-icon><i class="play circle outline icon"></i></el-icon>
-    </footer>
-  </el-card>
+  <div class="song_list_cover_wrapper">
+    <el-card class="song_list_cover_container" shadow="never">
+      <header>
+        <span style="float: right">
+          <i class="headphones icon"></i>
+          666万
+        </span>
+      </header>
+      <footer>
+        <el-text class="footer_text" truncated>云音乐私人频道</el-text>
+        <el-icon><i class="play circle outline icon"></i></el-icon>
+      </footer>
+    </el-card>
+    <div>
+      <slot></slot>
+      <span>抖音热歌</span>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
 
 <style lang="less" scoped>
+.song_list_cover_wrapper {
+  width: 156px;
+  margin-bottom: 20px;
+}
 .song_list_cover_container {
   height: 156px;
-  width: 156px;
+  width: 100%;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-image: url(https://p2.music.126.net/cFEn-P8Dr4_oVJqxXCQjXQ==/7931876885323415.jpg?param=140y140);
   background-size: 100% 100%;
   &:hover {
