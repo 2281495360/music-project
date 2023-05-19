@@ -35,6 +35,14 @@ const routes: RouteRecordRaw[] = [
           title: 'Video',
         },
       },
+      {
+        path: 'rank',
+        name: 'rank',
+        component: () => import('@/views/Rank/index.vue'),
+        meta: {
+          title: 'Rank',
+        },
+      },
     ],
   },
   /**

@@ -32,8 +32,6 @@ const filterRadio = ref('全部视频')
 .ep-bg-purple {
   height: 154px;
   width: 272px;
-  //background-color: #44aaf8;
-  //border: 1px solid #44aaf8;
   background-image: url(https://p1.music.126.net/uFWcdYyjcqvM5JFZ5nsPGw==/1365593453032084.jpg?param=140y140);
   background-repeat: no-repeat;
   background-size: 100% 100%;

@@ -8,7 +8,7 @@
         <el-aside width="200px" class="box_aside">
           <Aside></Aside>
         </el-aside>
-        <el-main>
+        <el-main class="box_main">
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -49,6 +49,9 @@ import Footer from '@/views/Footer/index.vue'
   .box_aside {
     height: calc(770px - 62px - 74px);
     border-right: 1px solid #e0e0e0;
+  }
+  .box_main {
+    height: calc(770px - 62px - 74px);
   }
   :deep(.el-main) {
     padding-top: 10px;

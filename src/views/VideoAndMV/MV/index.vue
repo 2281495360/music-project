@@ -31,6 +31,9 @@
       </el-radio-group>
     </div>
   </header>
+  <main>
+    <div class="grid-content ep-bg-purple" v-for="item in 24" :key="item" />
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -47,6 +50,24 @@ const orderRadio = ref('hot')
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+.ep-bg-purple {
+  height: 154px;
+  width: 272px;
+  background-image: url(https://p1.music.126.net/uFWcdYyjcqvM5JFZ5nsPGw==/1365593453032084.jpg?param=140y140);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+main {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 34px;
+  margin-top: 10px;
 }
 :deep(.el-radio__input) {
   display: none;

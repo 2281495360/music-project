@@ -5,6 +5,9 @@
         <VideoComponent></VideoComponent>
       </el-tab-pane>
       <el-tab-pane label="MV" name="MV"> <MV></MV> </el-tab-pane>
+      <el-tab-pane label="MV排行榜" name="MvRank">
+        <MvRank></MvRank>
+      </el-tab-pane>
     </el-scrollbar>
   </el-tabs>
 </template>
@@ -13,6 +16,7 @@
 import type { TabsPaneContext } from 'element-plus'
 import VideoComponent from './VideoComponent/index.vue'
 import MV from './MV/index.vue'
+import MvRank from './MvRank/index.vue'
 const activeName = ref('视频')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
