@@ -38,7 +38,7 @@
         src="https://p1.music.126.net/whG7pbsbd1akKtOE7V3R_Q==/109951168299161319.jpg?param=130y130"
         ><template #error>
           <div class="image-slot">
-            <el-icon><icon-picture /></el-icon>
+            <el-icon><Picture /></el-icon>
           </div>
         </template>
         <template #placeholder>
@@ -51,6 +51,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Picture } from '@element-plus/icons-vue'
 const languageList = ['华语', '欧美', '日本', '韩国', '其它']
 const classificationList = ['男歌手', '女歌手', '乐队组合']
 const filterLetterList = [

@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
         name: 'findMusic',
         component: () => import('@/views/FindMusic/index.vue'),
         meta: {
-          title: 'findMusic',
+          title: 'FindMusic',
         },
       },
       {
@@ -33,6 +33,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/VideoAndMV/index.vue'),
         meta: {
           title: 'Video',
+        },
+      },
+      {
+        path: 'podcast',
+        name: 'podcast',
+        component: () => import('@/views/Podcast/index.vue'),
+        meta: {
+          title: 'Podcast',
         },
       },
       {

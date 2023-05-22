@@ -1,21 +1,22 @@
 <template>
   <el-scrollbar height="634px">
     <el-menu
-      default-active="1"
+      :default-active="activeMenu"
       class="menu"
       @open="handleOpen"
       @close="handleClose"
+      router
     >
-      <el-menu-item index="1" id="item">
+      <el-menu-item index="/findMusic">
         <span>发现音乐</span>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="/video">
         <span>视频</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="/podcast">
         <span>播客</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="/rank">
         <span>排行榜</span>
       </el-menu-item>
       <el-menu-item-group title="我的音乐">
@@ -65,6 +66,9 @@
 </template>
 
 <script lang="ts" setup>
+const route = useRoute()
+//高亮菜单
+const activeMenu = computed(() => route.path)
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
