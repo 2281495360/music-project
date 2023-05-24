@@ -44,6 +44,22 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
+        path: 'podcastItem',
+        name: 'podcastItem',
+        component: () => import('@/views/Podcast/PodcastItem/index.vue'),
+        meta: {
+          title: 'PodcastItem',
+        },
+      },
+      {
+        path: 'songListDetail',
+        name: 'songListDetail',
+        component: () => import('@/views/SongListDetail/index.vue'),
+        meta: {
+          title: 'SongListDetail',
+        },
+      },
+      {
         path: 'rank',
         name: 'rank',
         component: () => import('@/views/Rank/index.vue'),

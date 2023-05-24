@@ -30,13 +30,6 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 }
 </script>
 <style lang="less" scoped>
-.demo-tabs > .el-tabs__content {
-  width: 100%;
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
 :deep(.is-active) {
   color: #333333;
   font-weight: bold;
