@@ -1,19 +1,9 @@
 <template>
-  <SongListDetailHead>
-    <template #createTime>
-      <span>2022-02-17创建</span>
-    </template>
-    <template #songAndPlayCount>
-      <span>歌曲：666 &nbsp;&nbsp; 播放：135万</span>
-    </template>
-  </SongListDetailHead>
+  <SongListDetailHead></SongListDetailHead>
   <main>
     <el-tabs id="tabs" v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="歌曲列表" name="歌曲列表">
-        <SongTable></SongTable>
-      </el-tab-pane>
-      <el-tab-pane label="评论" name="评论">
-        <Comment></Comment>
+      <el-tab-pane label="声音(483)" name="声音">
+        <Sound></Sound>
       </el-tab-pane>
       <el-tab-pane label="收藏者" name="收藏者">
         <Collector></Collector>
@@ -22,14 +12,12 @@
   </main>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import SongListDetailHead from '@/components/SongListDetailHead.vue'
-import SongTable from './component/SongTable.vue'
-import Comment from './component/Comment.vue'
-import Collector from './component/Collector.vue'
+import Sound from './component/Sound.vue'
+import Collector from '../SongListDetail/component/Collector.vue'
 import type { TabsPaneContext } from 'element-plus'
-
-const activeName = ref('歌曲列表')
+const activeName = ref('声音')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   console.log(tab, event)

@@ -36,6 +36,14 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
+        path: 'mvDetail',
+        name: 'mvDetail',
+        component: () => import('@/views/MvDetail/index.vue'),
+        meta: {
+          title: 'MvDetail',
+        },
+      },
+      {
         path: 'podcast',
         name: 'podcast',
         component: () => import('@/views/Podcast/index.vue'),
@@ -49,6 +57,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/Podcast/PodcastItem/index.vue'),
         meta: {
           title: 'PodcastItem',
+        },
+      },
+      {
+        path: 'podcastDetail',
+        name: 'podcastDetail',
+        component: () => import('@/views/PodcastDetail/index.vue'),
+        meta: {
+          title: 'PodcastDetail',
         },
       },
       {
