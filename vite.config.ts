@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => {
      * @see https://cn.vitejs.dev/config/#server-proxy
      */
     server: {
-      port: 3000,
+      port: 5000,
       // proxy: {
       //   '/devapi': {
       //     target: 'http://192.168.10.198',

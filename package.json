@@ -18,7 +18,7 @@
     "mirror:get": "npm config get registry",
     "mirror:set": "npm config set registry https://registry.npmmirror.com",
     "mirror:rm": "npm config rm registry",
-    "backup": "git add . && git commit -m \"feat: ✨初步完成视频详情、播客详情的基本布局\" && git push",
+    "backup": "git add . && git commit -m \"feat: ✨进行请求封装，书写接口并渲染首页轮播图\" && git push",
     "up": "npx npm-check-updates -u",
     "prepare": "simple-git-hooks"
   },
@@ -26,6 +26,7 @@
     "@bassist/progress": "^0.2.1",
     "@bassist/utils": "^0.11.2",
     "@element-plus/icons-vue": "^2.1.0",
+    "axios": "^1.4.0",
     "element-plus": "^2.3.4",
     "pinia": "^2.0.33",
     "vue": "^3.2.47",

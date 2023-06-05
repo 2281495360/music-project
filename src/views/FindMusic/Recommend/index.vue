@@ -1,7 +1,7 @@
 <template>
   <el-carousel :interval="4000" type="card" height="200px">
-    <el-carousel-item v-for="item in 6" :key="item">
-      <h3 text="2xl" justify="center">{{ item }}</h3>
+    <el-carousel-item v-for="item in bannerImgList" :key="item.targetId">
+      <img :src="item.imageUrl" style="width: 100%; height: 100%" />
     </el-carousel-item>
   </el-carousel>
   <GridItem :title="recommendTitle" :row="recommendRow" :col="recommendCol">
@@ -31,6 +31,18 @@
 </template>
 <script lang="ts" setup>
 import GridItem from '@/components/GridItem.vue'
+import { getBanner } from '@/api/findMusic.js'
+
+const bannerImgList = ref([])
+// 获取轮播图的图片
+const getBannerList = async () => {
+  let res = await getBanner()
+  if (res.code !== 200) return
+  bannerImgList.value = res.banners
+}
+onMounted(() => {
+  getBannerList()
+})
 const recommendTitle = ref('推荐歌单')
 const recommendRow = ref(2)
 const recommendCol = ref(5)
