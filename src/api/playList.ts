@@ -1,4 +1,5 @@
 import request from '@/utils/request.ts'
+import type { getPersonalizedType } from '@/models/play_list'
 
 const api = {
   personalized: '/personalized', // 获取推荐歌单
@@ -20,7 +21,7 @@ const api = {
 export default api
 
 /* 获取推荐歌单 */
-export function getPersonalized(limit) {
+export function getPersonalized(limit: number = 10): getPersonalizedType {
   return request({
     url: api.personalized,
     method: 'get',

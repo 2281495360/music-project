@@ -1,4 +1,5 @@
 import request from '@/utils/request.ts'
+import type { getBannerType } from '@/models/banner'
 
 const api = {
   banner: '/banner', // 获取轮播图
@@ -10,7 +11,7 @@ const api = {
 export default api
 
 // 获取轮播图
-export function getBanner() {
+export function getBanner(): getBannerType {
   return request({
     url: api.banner,
     method: 'get',

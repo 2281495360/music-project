@@ -5,7 +5,7 @@
     </el-carousel-item>
   </el-carousel>
   <GridItem :title="recommendTitle" :row="recommendRow" :col="recommendCol">
-    <div class="grid-content ep-bg-purple" />
+    <SongListCover></SongListCover>
   </GridItem>
   <GridItem
     :title="topPodcastsTitle"
@@ -31,9 +31,20 @@
 </template>
 <script lang="ts" setup>
 import GridItem from '@/components/GridItem.vue'
+import SongListCover from '@/components/SongListCover.vue'
 import { getBanner } from '@/api/findMusic.js'
+import { getPersonalized } from '@/api/playList.js'
+import type { Banner } from '@/models/banner'
+import type { palyListItem } from '@/models/play_list'
 
-const bannerImgList = ref([])
+const bannerImgList = ref<Banner[]>([])
+const personalizedPlayList = ref<palyListItem[]>([])
+// 获取推荐歌单（未登录）
+const getPersonalizedList = async () => {
+  let res = await getPersonalized()
+  if (res.code !== 200) return
+  personalizedPlayList.value = res.result
+}
 // 获取轮播图的图片
 const getBannerList = async () => {
   let res = await getBanner()
@@ -42,6 +53,7 @@ const getBannerList = async () => {
 }
 onMounted(() => {
   getBannerList()
+  getPersonalizedList()
 })
 const recommendTitle = ref('推荐歌单')
 const recommendRow = ref(2)
@@ -56,28 +68,5 @@ const topPodcastsCol = ref(2)
   .content {
     margin-left: 10px;
   }
-}
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-  text-align: center;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-.ep-bg-purple {
-  background-color: #b1bece;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 156px;
-  min-width: 156px;
 }
 </style>

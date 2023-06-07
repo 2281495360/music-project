@@ -7,9 +7,9 @@
     </header>
     <main style="margin-top: 10px">
       <el-row justify="space-between" v-for="item in grid.row" :key="item">
-        <el-col :span="24 / grid.col" v-for="item in grid.col" :key="item"
-          ><slot
-        /></el-col>
+        <el-col :span="24 / grid.col" v-for="item in grid.col" :key="item">
+          <slot />
+        </el-col>
       </el-row>
     </main>
   </div>
