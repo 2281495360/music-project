@@ -46,7 +46,7 @@ defineProps<{
   }
   img:hover {
     cursor: pointer;
-    border: 1px solid red;
+    border: 2px solid #409eff;
   }
   &:hover {
     background-color: #ebebeb;
