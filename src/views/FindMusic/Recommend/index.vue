@@ -75,7 +75,7 @@
       <div class="item" v-for="item in newMusicList" :key="item.id">
         <img :src="item.picUrl" />
         <main style="margin-left: 0.5em">
-          <el-text truncated style="width: 240px">{{ item.name }}</el-text>
+          <el-text truncated style="width: 220px">{{ item.name }}</el-text>
           <div style="opacity: 0.5; font-size: 12px">
             <span
               v-for="artist in item.song.artists.slice(0, 2)"

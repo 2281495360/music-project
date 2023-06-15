@@ -1,48 +1,121 @@
 <template>
-  <div class="ui segment wrapper">
+  <div
+    class="ui segment wrapper"
+    v-for="item in highQualityPlayList"
+    :key="item.id"
+    :style="{ 'background-image': `url(${item.coverImgUrl})` }"
+  >
     <div class="content">
-      <img
-        class="ui small image"
-        src="https://p2.music.126.net/msnuUnhDv5c0foGWFXiUKg==/109951168185283405.jpg?param=177y177"
-      />
+      <img class="ui small bordered rounded image" :src="item.coverImgUrl" />
       <div class="wrapper_right_box">
         <el-tag effect="plain" size="large" type="warning" round
           ><i class="chess queen icon"></i>精品歌单</el-tag
         >
         <h4 style="margin-top: 20px; color: #fff">
-          国风新潮大赏|歌声岂合世间闻
+          {{ item.name }}
         </h4>
+        <p style="color: #fff; opacity: 0.5">{{ item.copywriter }}</p>
       </div>
     </div>
   </div>
   <div class="radio_box">
-    <el-button round plain
-      >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
-    ></el-button>
-    <el-radio-group v-model="radio" size="small">
-      <el-radio-button label="华语" />
-      <el-radio-button label="流行" />
-      <el-radio-button label="古典" />
-      <el-radio-button label="ACG" />
-      <el-radio-button label="摇滚" />
-      <el-radio-button label="民谣" />
+    <el-popover placement="right" :width="400" trigger="click">
+      <template #reference>
+        <el-button round plain
+          >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
+        ></el-button>
+      </template>
+      <el-radio-group v-model="radio" size="small">
+        <div class="ui segments">
+          <div class="ui segment">
+            <el-radio label="华语" border>华语</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio label="欧美" border>欧美</el-radio>
+          </div>
+          <div class="ui segment">
+            <el-radio label="华语" border>华语</el-radio>
+            <el-radio label="流行" border>流行</el-radio>
+          </div>
+          <div class="ui segment">
+            <el-radio label="华语" border>华语</el-radio>
+            <el-radio label="流行" border>流行</el-radio>
+          </div>
+          <div class="ui segment">
+            <el-radio label="华语" border>华语</el-radio>
+            <el-radio label="流行" border>流行</el-radio>
+          </div>
+          <div class="ui segment">
+            <el-radio label="华语" border>华语</el-radio>
+            <el-radio label="流行" border>流行</el-radio>
+          </div>
+        </div>
+      </el-radio-group>
+    </el-popover>
+    <el-radio-group v-model="radio" size="small" @change="changeCat">
+      <el-radio-button v-for="item in radioList" :key="item" :label="item" />
     </el-radio-group>
   </div>
-  <el-row justify="space-between" v-for="item in 3" :key="item">
-    <el-col :span="24 / 5" v-for="item in 5" :key="item"
-      ><SongListCover
-        ><el-tag effect="plain" type="info" size="small"
-          >3D环绕</el-tag
-        ></SongListCover
-      ></el-col
+  <main class="grid_container">
+    <SongListCover
+      v-for="item in palyList"
+      :key="item.id"
+      :name="item.name"
+      :picUrl="item.coverImgUrl"
+      :playCount="item.playCount"
+      ><el-tag effect="plain" type="info" size="small" v-if="false"
+        >3D环绕</el-tag
+      ></SongListCover
     >
-  </el-row>
+  </main>
 </template>
 
 <script lang="ts" setup>
 import { ArrowRight } from '@element-plus/icons-vue'
 import SongListCover from '@/components/SongListCover.vue'
-const radio = ref('流行')
+import { getPlayListByCat, getHighQuality } from '@/api/playList'
+import type { PlayListItem, HighqualityPlayListItem } from '@/models/play_list'
+
+const radio = ref('华语')
+const radioList = ['华语', '流行', '古典', 'ACG', '摇滚', '民谣']
+const palyList = ref<PlayListItem[]>([])
+const highQualityPlayList = ref<HighqualityPlayListItem[]>([])
+interface PlayListParams {
+  limit: number
+  order: string
+  cat: string
+  offset: number
+}
+const getPlayListParams = reactive<PlayListParams>({
+  limit: 25,
+  order: 'hot',
+  cat: '华语',
+  offset: 0,
+})
+const getPlayList = async (params: PlayListParams) => {
+  let res = await getPlayListByCat(params)
+  if (res.code !== 200) return
+  palyList.value = res.playlists
+}
+const getHighQualityList = async (limit: number = 1, cat: string) => {
+  let res = await getHighQuality(limit, cat)
+  if (res.code !== 200) return
+  highQualityPlayList.value = res.playlists
+}
+const changeCat = (value: string) => {
+  getPlayListParams.cat = value
+  getPlayList(getPlayListParams)
+  getHighQualityList(1, value)
+}
+onMounted(() => {
+  getPlayList(getPlayListParams)
+  getHighQualityList(1, '华语')
+})
 </script>
 
 <style lang="less" scoped>
@@ -52,7 +125,6 @@ const radio = ref('流行')
   border: none;
   overflow: hidden;
   border-radius: 8px;
-  background-image: url(https://p2.music.126.net/msnuUnhDv5c0foGWFXiUKg==/109951168185283405.jpg?param=177y177);
   .content {
     display: flex;
     padding: 10px;
@@ -71,5 +143,13 @@ const radio = ref('流行')
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.grid_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+:deep(.el-radio__input) {
+  display: none;
 }
 </style>

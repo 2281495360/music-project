@@ -1,5 +1,9 @@
 import request from '@/utils/request.ts'
-import type { getPersonalizedType } from '@/models/play_list'
+import type {
+  getPersonalizedType,
+  PlayList,
+  HighqualityPlayList,
+} from '@/models/play_list'
 
 const api = {
   personalized: '/personalized', // 获取推荐歌单
@@ -63,7 +67,7 @@ export function getHotCat() {
 }
 
 /* 根据分类获取歌单 */
-export function getPlayListByCat({ limit, order, cat, offset }) {
+export function getPlayListByCat({ limit, order, cat, offset }): PlayList {
   return request({
     url: api.playListByCat,
     method: 'get',
@@ -80,7 +84,11 @@ export function getHighQualityTags() {
 }
 
 /* 获取精品歌单 */
-export function getHighQuality(limit, cat, before) {
+export function getHighQuality(
+  limit: number,
+  cat: string,
+  before?: number
+): HighqualityPlayList {
   return request({
     url: api.highQuality,
     method: 'get',
