@@ -19,15 +19,18 @@
     </div>
   </div>
   <div class="radio_box">
-    <el-popover placement="right" :width="400" trigger="click">
+    <el-popover placement="right" :width="420" trigger="click">
       <template #reference>
         <el-button round plain
           >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
         ></el-button>
       </template>
-      <el-radio-group v-model="radio" size="small">
-        <div class="ui segments">
-          <div class="ui segment">
+      <el-radio-group v-model="radio" size="small" style="width: 100%">
+        <div class="ui segments" style="width: 100%">
+          <div
+            class="ui segment"
+            style="display: flex; flex-wrap: wrap; gap: 10px"
+          >
             <el-radio label="华语" border>华语</el-radio>
             <el-radio label="欧美" border>欧美</el-radio>
             <el-radio label="欧美" border>欧美</el-radio>
@@ -37,22 +40,6 @@
             <el-radio label="欧美" border>欧美</el-radio>
             <el-radio label="欧美" border>欧美</el-radio>
             <el-radio label="欧美" border>欧美</el-radio>
-          </div>
-          <div class="ui segment">
-            <el-radio label="华语" border>华语</el-radio>
-            <el-radio label="流行" border>流行</el-radio>
-          </div>
-          <div class="ui segment">
-            <el-radio label="华语" border>华语</el-radio>
-            <el-radio label="流行" border>流行</el-radio>
-          </div>
-          <div class="ui segment">
-            <el-radio label="华语" border>华语</el-radio>
-            <el-radio label="流行" border>流行</el-radio>
-          </div>
-          <div class="ui segment">
-            <el-radio label="华语" border>华语</el-radio>
-            <el-radio label="流行" border>流行</el-radio>
           </div>
         </div>
       </el-radio-group>
@@ -151,5 +138,8 @@ onMounted(() => {
 }
 :deep(.el-radio__input) {
   display: none;
+}
+:deep(.el-radio) {
+  margin-right: 0;
 }
 </style>
