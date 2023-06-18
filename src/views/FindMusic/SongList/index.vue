@@ -19,27 +19,30 @@
     </div>
   </div>
   <div class="radio_box">
-    <el-popover placement="right" :width="420" trigger="click">
+    <el-popover placement="right" :width="420" trigger="hover">
       <template #reference>
         <el-button round plain
-          >流行<el-icon class="el-icon--right"><ArrowRight /></el-icon
+          >{{ radio }}<el-icon class="el-icon--right"><ArrowRight /></el-icon
         ></el-button>
       </template>
-      <el-radio-group v-model="radio" size="small" style="width: 100%">
+      <el-radio-group
+        v-model="radio"
+        size="small"
+        style="width: 100%"
+        @change="changeCat"
+      >
         <div class="ui segments" style="width: 100%">
           <div
             class="ui segment"
             style="display: flex; flex-wrap: wrap; gap: 10px"
           >
-            <el-radio label="华语" border>华语</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
-            <el-radio label="欧美" border>欧美</el-radio>
+            <el-radio
+              v-for="item in playListType"
+              :key="item"
+              :label="item"
+              border
+              >{{ item }}</el-radio
+            >
           </div>
         </div>
       </el-radio-group>
@@ -67,7 +70,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 import SongListCover from '@/components/SongListCover.vue'
 import { getPlayListByCat, getHighQuality } from '@/api/playList'
 import type { PlayListItem, HighqualityPlayListItem } from '@/models/play_list'
-
+import { playListType } from '@/constants/index'
 const radio = ref('华语')
 const radioList = ['华语', '流行', '古典', 'ACG', '摇滚', '民谣']
 const palyList = ref<PlayListItem[]>([])
@@ -94,10 +97,10 @@ const getHighQualityList = async (limit: number = 1, cat: string) => {
   if (res.code !== 200) return
   highQualityPlayList.value = res.playlists
 }
-const changeCat = (value: string) => {
-  getPlayListParams.cat = value
+const changeCat = (value: string | number | boolean) => {
+  getPlayListParams.cat = value as string
   getPlayList(getPlayListParams)
-  getHighQualityList(1, value)
+  getHighQualityList(1, value as string)
 }
 onMounted(() => {
   getPlayList(getPlayListParams)

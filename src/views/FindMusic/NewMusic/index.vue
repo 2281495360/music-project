@@ -58,7 +58,7 @@
 <script lang="ts" setup>
 import { VideoPlay, FolderAdd, Picture } from '@element-plus/icons-vue'
 const radio3 = ref('全部')
-const radioList = ['全部', '华语', '欧美', '韩国', '日本', '小语种']
+const radioList = ['全部', '华语', '欧美', '韩国', '日本']
 const tableData = [
   {
     author: '张三',
