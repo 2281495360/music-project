@@ -105,10 +105,10 @@ import type {
   ExclusiveMVItem,
   NewMusicItem,
 } from '@/models/personalized'
-import type { palyListItem } from '@/models/play_list'
+import type { PersonalizedPlayListItem } from '@/models/play_list'
 
 const bannerImgList = ref<Banner[]>([])
-const personalizedPlayList = ref<palyListItem[]>([])
+const personalizedPlayList = ref<PersonalizedPlayListItem[]>([])
 const hotDjProgramList = ref<hotDjProgramItem[]>([])
 const exclusiveMvList = ref<ExclusiveMVItem[]>([])
 const newMusicList = ref<NewMusicItem[]>([])

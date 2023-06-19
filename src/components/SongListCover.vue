@@ -36,7 +36,7 @@
     </el-card>
     <div>
       <slot></slot>
-      <p>{{ name }}</p>
+      <el-text truncated>{{ name }}</el-text>
     </div>
   </div>
 </template>

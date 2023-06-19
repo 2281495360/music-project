@@ -3,7 +3,9 @@ import type {
   getPersonalizedType,
   PlayList,
   HighqualityPlayList,
+  MusicDetail,
 } from '@/models/play_list'
+import type { RankListRes } from '@/models/rankList'
 
 const api = {
   personalized: '/personalized', // 获取推荐歌单
@@ -34,16 +36,16 @@ export function getPersonalized(limit: number = 10): getPersonalizedType {
 }
 
 /* 获取歌单详情 */
-export function getPlayListDetail(id) {
+export function getPlayListDetail(id): MusicDetail {
   return request({
     url: api.playListDetail,
     method: 'get',
-    params: { id, timestamp: Date.now() },
+    params: { id },
   })
 }
 
 /* 获取排行榜信息 */
-export function getToplist() {
+export function getToplist(): RankListRes {
   return request({
     url: api.topList,
     method: 'get',
