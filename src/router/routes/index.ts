@@ -28,11 +28,11 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'video',
-        name: 'video',
+        path: 'mv',
+        name: 'MV',
         component: () => import('@/views/VideoAndMV/index.vue'),
         meta: {
-          title: 'Video',
+          title: 'MV',
         },
       },
       {

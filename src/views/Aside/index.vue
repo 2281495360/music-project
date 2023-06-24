@@ -10,7 +10,7 @@
       <el-menu-item index="/findMusic">
         <span>发现音乐</span>
       </el-menu-item>
-      <el-menu-item index="/video">
+      <el-menu-item index="/mv">
         <span>视频</span>
       </el-menu-item>
       <el-menu-item index="/podcast">
