@@ -6,9 +6,13 @@
       :style="{ 'background-image': `url(${picUrl})` }"
     >
       <header>
-        <span style="float: right">
+        <span style="float: right" v-if="playCount !== 0">
           <i class="headphones icon"></i>
           {{ useNumberFormat(playCount) }}
+        </span>
+        <span style="float: right" v-else>
+          <i class="star outline icon"></i>
+          {{ useNumberFormat(subCount || 0) }}
         </span>
       </header>
       <div class="paly_icon">
@@ -34,9 +38,9 @@
         <el-icon><i class="play circle outline icon"></i></el-icon>
       </footer>
     </el-card>
-    <div>
+    <div class="title">
       <slot></slot>
-      <el-text truncated>{{ name }}</el-text>
+      {{ name }}
     </div>
   </div>
 </template>
@@ -48,6 +52,7 @@ defineProps<{
   picUrl: string
   playCount: number
   name: string
+  subCount?: number
 }>()
 </script>
 
@@ -55,6 +60,19 @@ defineProps<{
 .song_list_cover_wrapper {
   width: 156px;
   margin-bottom: 20px;
+  header {
+    background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+  .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 }
 .song_list_cover_container {
   height: 156px;
