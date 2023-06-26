@@ -127,3 +127,65 @@ export interface Dj {
 export interface Experts {
   '1': string
 }
+
+//类别热门播客
+export interface HotPodcast {
+  code: number
+  count: number
+  djRadios: DjRadio[]
+  hasMore: boolean
+}
+
+export interface DjRadio {
+  buyed: boolean
+  category: string
+  categoryId: number
+  createTime: number
+  desc: string
+  descPicList: any[]
+  discountPrice: null
+  dj: Dj
+  dynamic: boolean
+  feeScope: number
+  finished: boolean
+  icon: null
+  id: number
+  intervenePicId: number
+  intervenePicUrl: string
+  lastProgramCreateTime: number
+  lastProgramId: number
+  lastProgramName: string
+  liveInfo: null
+  manualTagsDTO: null
+  name: string
+  originalPrice: number
+  picId: number
+  picUrl: string
+  playCount: number
+  price: number
+  privacy: boolean
+  programCount: number
+  purchaseCount: number
+  radioFeeType: number
+  rcmdtext: string
+  replaceRadio: null
+  replaceRadioId: number
+  secondCategory: string
+  shortName: null
+  subCount: number
+  subed: boolean
+  taskId: number
+  underShelf: boolean
+  videos: null
+}
+
+export interface AvatarDetail {
+  identityIconUrl: string
+  identityLevel: number
+  userType: number
+}
+
+export interface podcastCategoryType {
+  name: string
+  id: number
+}

@@ -27,7 +27,7 @@
         </SongListCover>
       </div>
     </section>
-    <section>
+    <!-- <section style="margin-bottom: 20px">
       <h3>本周上新</h3>
       <div class="ui two column grid" style="margin-right: 0">
         <div class="column" v-for="item in 2" :key="item">
@@ -55,59 +55,33 @@
           </div>
         </div>
       </div>
-    </section>
-    <section>
-      <h3>创作翻唱</h3>
-      <div class="grid_item_container">
-        <SongListCover
-          style="width: 160px"
-          v-for="item in 5"
-          :key="item"
-        ></SongListCover>
-      </div>
-    </section>
-    <section>
-      <h3>电音</h3>
-      <div class="grid_item_container">
-        <SongListCover
-          style="width: 160px"
-          v-for="item in 5"
-          :key="item"
-        ></SongListCover>
-      </div>
-    </section>
-    <section>
-      <h3>音乐推荐</h3>
-      <div class="grid_item_container">
-        <SongListCover
-          style="width: 160px"
-          v-for="item in 5"
-          :key="item"
-        ></SongListCover>
-      </div>
-    </section>
-    <section>
-      <h3>二次元</h3>
-      <div class="grid_item_container">
-        <SongListCover
-          style="width: 160px"
-          v-for="item in 5"
-          :key="item"
-        ></SongListCover>
-      </div>
+    </section> -->
+    <section v-for="item in podcastCategory" :key="item.id">
+      <h3 style="cursor: pointer">{{ item.name }} ></h3>
+      <PodcastGridItem :cateId="item.id"></PodcastGridItem>
     </section>
   </el-scrollbar>
 </template>
 
 <script lang="ts" setup>
 import { getPodcastCategory, getPodcastRecommend } from '@/api/podcast'
-import type { Category, Datum } from '@/models/podcastType'
+import type { Category, Datum, podcastCategoryType } from '@/models/podcastType'
+import PodcastGridItem from '@/components/podcastGridItem.vue'
 const imgUrlList = ref<Category[]>([])
 const maybeLike = ref<Datum[]>([])
+const podcastCategory = ref<podcastCategoryType[]>([])
 const initPodcastCategory = async () => {
   let res = await getPodcastCategory()
   if (res.code !== 200) return
   imgUrlList.value = res.categories
+  podcastCategory.value = res.categories
+    .map((item) => {
+      return {
+        name: item.name,
+        id: item.id,
+      }
+    })
+    .slice(0, 10)
 }
 const getMaybeYouLike = async (limit: number) => {
   let res = await getPodcastRecommend(limit)

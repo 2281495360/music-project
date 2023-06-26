@@ -1,5 +1,9 @@
 import request from '@/utils/request.ts'
-import type { PodcastCategory, PodcastRecommend } from '@/models/podcastType'
+import type {
+  PodcastCategory,
+  PodcastRecommend,
+  HotPodcast,
+} from '@/models/podcastType'
 //获取播客分类
 export function getPodcastCategory(): PodcastCategory {
   return request({
@@ -13,5 +17,18 @@ export function getPodcastRecommend(limit: number = 5): PodcastRecommend {
     url: '/dj/personalize/recommend',
     method: 'get',
     params: { limit },
+  })
+}
+
+//类别热门播客
+export function getHotPodcastByCategory(
+  cateId: number,
+  limit: number,
+  offset: number
+): HotPodcast {
+  return request({
+    url: '/dj/radio/hot',
+    method: 'get',
+    params: { cateId, limit, offset },
   })
 }
